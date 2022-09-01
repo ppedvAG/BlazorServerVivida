@@ -1,0 +1,18 @@
+﻿@page "/navman"
+@inject NavigationManager nm
+<h3>Navman</h3>
+<a href="/navman?data=10">10</a>
+<a href="/navman?data=20">20</a>
+<a href="/navman?data=30">30</a>
+<br />
+@nm.Uri
+
+@code {
+    protected override void OnInitialized() => nm.LocationChanged += LocChanged;
+
+
+    void LocChanged(object sender, LocationChangedEventArgs e)
+    {
+        
+    }
+}
