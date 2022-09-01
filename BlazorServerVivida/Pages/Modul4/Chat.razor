@@ -1,0 +1,43 @@
+﻿@page "/chat"
+@inject ChatVM vm
+<h3>Chat</h3>
+<div class="row">
+    <div class="col">
+        <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">Nachricht</label>
+    <div class="col-sm-9 ">
+        <div class="input-group">
+            <input type="text" class="form-control" @bind="eingabe">
+            <button class="btn btn-outline-primary" type="button"
+            @onclick="()=>vm.Add(eingabe)">save</button>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <ul class="list-group list-group-flush">
+            @foreach (var item in vm.NachrichtenListe)
+            {
+                <li class="list-group-item">
+                    @item.Text
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+
+@code {
+    string eingabe;
+
+    protected override void OnInitialized()
+    {
+        vm.OnAdd += UiRefresh;
+    }
+    void UiRefresh()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+}
