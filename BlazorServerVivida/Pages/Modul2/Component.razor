@@ -1,0 +1,15 @@
+﻿@page "/hannes"
+@page "/hannes/neu"
+@page "/hannes/{id:int}"
+<h3>Component</h3>
+
+@(i+1)
+
+@code {
+    int i = 0;
+    [Parameter]
+    public int id { get; set; }
+    //[Parameter(SupplyParameterFromQueryAttribute()]
+    //public string query { get; set; }
+
+}
