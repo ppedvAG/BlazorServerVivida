@@ -8,19 +8,12 @@
     }
     else
     {
-        <Virtualize Items="Liste" ItemSize="25" OverscanCount="5" Context="item">
-
-            <Placeholder>
-                <div class="spinner-border" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                </div>
-            </Placeholder>
-            <ItemContent>
-                <li class="list-group-item">
-                    @item.title
-                </li>
-            </ItemContent>
-        </Virtualize>
+        @foreach (var item in Liste)
+        {
+            <li class="list-group-item">
+                @item.title
+            </li>
+        }
     }
 </ul>
 
@@ -30,7 +23,7 @@
     {
         var client = http.CreateClient();
         Liste = await client.GetFromJsonAsync<List<ToDos>>("https://jsonplaceholder.typicode.com/todos");
-
+  
 
     }
 
