@@ -4,12 +4,22 @@
 <h3>Component</h3>
 
 @(i+1)
+<Component1 MyProperty="1" class="btn" ></Component1>
+<input @bind-value="franz" @ref="html1"  />
+<button @onclick="test" >test</button>
 
+@franz
 @code {
     int i = 0;
     [Parameter]
     public int id { get; set; }
     //[Parameter(SupplyParameterFromQueryAttribute()]
     //public string query { get; set; }
+    string franz;
+    ElementReference html1;
+    void test()
+    {
+        html1.FocusAsync();
 
+    }
 }

@@ -3,4 +3,6 @@
 @code {
     [Parameter]
 public int MyProperty { get; set; }
+[Parameter(CaptureUnmatchedValues =true)]
+public Dictionary<string,object> UnnamedProp { get; set; }
 }
