@@ -19,11 +19,11 @@
 
 @code {
     List<ToDos> Liste;
-    async void laden()
+    async Task laden()
     {
         var client = http.CreateClient();
         Liste = await client.GetFromJsonAsync<List<ToDos>>("https://jsonplaceholder.typicode.com/todos");
-        StateHasChanged();
+  
 
     }
 
