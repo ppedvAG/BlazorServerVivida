@@ -1,0 +1,22 @@
+﻿<h3 style="color:@Farbe">@Titel</h3>
+<div @attributes="MyAttributes">
+    @ChildContent
+</div>
+@code {
+
+    [Parameter]
+    [EditorRequired]
+    public string Titel { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object> MyAttributes { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+
+    [CascadingParameter]
+    public string Farbe { get; set; }
+    [CascadingParameter(Name ="Universum")]
+    public int Antwort { get; set; }
+}
