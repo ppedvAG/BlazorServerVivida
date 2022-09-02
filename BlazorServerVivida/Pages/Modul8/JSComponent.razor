@@ -1,0 +1,40 @@
+﻿@page "/js"
+@inject IJSRuntime JsRuntime
+<h3>JSComponent</h3>
+<button @onclick="click1">alert</button>
+<button @onclick="click2">Confirm</button>
+<button @onclick="click3">eval</button>
+<button @onclick="click4">ppedv</button>
+<button @onclick="click5">zwischenablage</button>
+<button @onclick="click6">lib</button>
+@wert
+@wert
+@code {
+    string wert;
+    void click1()
+    {
+        JsRuntime.InvokeVoidAsync("alert", "Hallo Welt");
+    }
+    async  Task click2()
+    {
+        wert= await JsRuntime.InvokeAsync<string>("prompt", "Was willste?");
+    }
+    void click3()
+    {
+        JsRuntime.InvokeVoidAsync("eval", "document.title = 'Hallo Welt';");
+    }
+    void click4()
+    {
+        JsRuntime.InvokeVoidAsync("ppedv", "Hallo Welt");
+    }
+    void click5()
+    {
+        JsRuntime.InvokeVoidAsync("navigator.clipboard.writeText", "Hallo Welt");
+    }
+
+   async Task click6()
+    {
+        var lib = new RazorClassLibrary1.ExampleJsInterop(JsRuntime);
+       wert=await lib.Prompt("Hallo Welt2");
+    }
+}
