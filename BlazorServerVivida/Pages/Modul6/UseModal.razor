@@ -1,0 +1,20 @@
+﻿@page "/um"
+<h3>UseModal</h3>
+<button class="btn btn-outline-info" @onclick="open">open</button>
+<ModalDialog @ref="md" Titel="Bitte eingabe" onSave="save">
+    <input class="form-control" @bind="eingabe"/>
+</ModalDialog>
+@code {
+    ModalDialog md;
+    string eingabe;
+    void open()
+    {
+        md.Show();
+
+    }
+    void save()
+    {
+
+        md.Show();
+    }
+}
