@@ -1,0 +1,30 @@
+﻿@page "/ur"
+@using models
+@inject NorthwindContext db
+<h3>UseRepeater</h3>
+<table class="table table-striped">
+    <tbody>
+        <Repeater ItemType="Customer" Context="item" SelectMethod="load">
+            <ItemTemplate>
+                <tr>
+                    <td>@item.CustomerId</td>
+                    <td>@item.CompanyName</td>
+
+                </tr>
+            </ItemTemplate>
+            <EmptyDataTemplate>
+                  <tr>
+                      <td colspan="2">keine Daten...</td>
+                  </tr>
+            </EmptyDataTemplate>
+        </Repeater>
+    </tbody>
+</table>
+
+@code {
+    List<Customer>load()
+    {
+        return db.Customers.ToList();
+    }
+
+}
