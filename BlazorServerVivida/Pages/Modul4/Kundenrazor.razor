@@ -2,13 +2,20 @@
 @using models
 @inject NorthwindContext db
 <h3>Kundenrazor</h3>
-<input class="form-control" @bind="suche"></input>
+<form @onsubmit="save">
+    <input class="form-control" @bind="suche"></input>
+    <input class="btn btn-primary" type="submit" />
+</form>
 <div class="list-group">
-    @foreach (var item in db.Customers.Where(x=>x.CompanyName.Contains(suche)))
+    @foreach (var item in db.Customers.Where(x => x.CompanyName.Contains(suche)))
     {
         <a href="/details/@item.CustomerId" @key="item.CustomerId">@item.CompanyName</a>
     }
 </div>
 @code {
     string suche;
+    void save()
+    {
+
+    }
 }
