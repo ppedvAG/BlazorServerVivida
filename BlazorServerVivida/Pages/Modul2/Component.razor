@@ -13,8 +13,9 @@
     int i = 0;
     [Parameter]
     public int id { get; set; }
-    //[Parameter(SupplyParameterFromQueryAttribute()]
-    //public string query { get; set; }
+    [Parameter]
+    [SupplyParameterFromQueryAttribute()]
+    public string query { get; set; }
     string franz;
     ElementReference html1;
     void test()
